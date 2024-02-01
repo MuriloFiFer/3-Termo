@@ -1,9 +1,15 @@
+/* Reset de estilos padrão */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url(img/cidade4.jfif);
+    background-size:80%;
+   
+    
 }
 
+/* Estilo do prédio e layout geral */
 #building {
     display: flex;
     flex-direction: column;
@@ -11,28 +17,33 @@ body {
     margin-top: 20px;
 }
 
+/* Estilo dos andares */
 .floor {
-    width: 200px;
-    height: 50px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    width: 150px;
+    height: 60px;
+    background-color: #94a9c0;
+    border: 2px solid #858e8e;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
+    justify-content:right;
+      
     cursor: pointer;
+    background-image: url(img/vidro2.jfif);
+    background-size: 70%;       
+    background-repeat: no-repeat;
 }
 
+/* Estilo do eixo dos elevadores */
 #elevator-shaft {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Estilo dos elevadores */
 .elevator {
     width: 100px;
     height: 50px;
-    background-color: #3498db;
+    background-color: #94a9c0;
     border: 1px solid #2980b9;
     margin: 5px;
     display: flex;
@@ -42,17 +53,21 @@ body {
     transition: top 0.5s ease-in-out;
 }
 
+/* Posicionamento inicial do Elevador 1 */
 #elevator1 {
-    left: -155px;
-    top: 340px; /* Ajuste conforme necessário para o térreo */
+    left: -125px;
+    top: 382px; /* Ajuste conforme necessário para o térreo */
 }
 
+/* Posicionamento inicial do Elevador 2 */
 #elevator2 {
-    right: -155px;
-    top: 280px; /* Ajuste conforme necessário para o térreo */
+    right: -128px;
+    top: 323px; /* Ajuste conforme necessário para o térreo */
 }
 
-.andar{
-    background-color: red;
-    margin-top: -125px;
+/* Estilo do plano de fundo dos andares */
+.andar {   
+    margin-top: -125px; /* Ajuste conforme necessário */
+    position: relative;
+    z-index: 1;
 }
