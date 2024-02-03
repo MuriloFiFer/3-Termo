@@ -1,3 +1,53 @@
+html
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Elevadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Contêiner principal -->
+<div id="building">
+    <!-- Eixo dos elevadores -->
+    <div id="elevator-shaft">
+        <!-- Elevador 1 -->
+        <div id="elevator1" class="elevator" data-floor="0">
+            <span>1</span>
+        </div>
+        <!-- Elevador 2 -->
+        <div id="elevator2" class="elevator" data-floor="0">
+            <span>2</span>
+        </div>
+    </div>
+
+    <!-- Andares do prédio -->
+    <div class="andar">
+        <div class="floor" data-floor="6">6</div>
+        <div class="floor" data-floor="5">5</div>
+        <div class="floor" data-floor="4">4</div>
+        <div class="floor" data-floor="3">3</div>
+        <div class="floor" data-floor="2">2</div>
+        <div class="floor" data-floor="1">1</div>
+        <div class="floor" data-floor="0">0</div>
+        <div class="floor" data-floor="-1">-1</div>
+        <div class="floor" data-floor="-2">-2</div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+JS 
+
 // Seleciona todos os elementos com a classe 'elevator'
 const elevators = document.querySelectorAll('.elevator');
 // Seleciona todos os elementos com a classe 'floor'
@@ -13,26 +63,27 @@ const moveElevator = (elevator, destination) => {
         return; // Não faz nada se já estiver no andar chamado
     }
 
-    // Ajuste para considerar corretamente o andar 0 (Térreo)
-    const destinationPosition = (destination === '6' ? 0 : 6 - destination) * floorHeight;
+    // Calcula a posição fixa para cada andar
+    const floorPositions = {
+        '6': 0,
+        '5': floorHeight *1,
+        '4': floorHeight * 2,
+        '3': floorHeight * 3,
+        '2': floorHeight * 4,
+        '1': floorHeight * 5,
+        '0': floorHeight * 6,
+        '-1': floorHeight * 7,
+        '-2': floorHeight * 8
+    };
+
+    // Ajusta a posição vertical do elevador com base no andar de destino
+    const destinationPosition = floorPositions[destination];
 
     // Move o elevador para a posição de destino
     elevator.style.top = `${destinationPosition}px`;
     // Atualiza o andar atual do elevador
     elevator.dataset.floor = destination;
 };
-
-
-
-
-// Adiciona um ouvinte de evento de clique para cada elevador
-elevators.forEach(elevator => {
-    elevator.addEventListener('click', () => {
-        const currentFloor = elevator.dataset.floor;
-        alert(`Elevador ${elevator.textContent} está no ${currentFloor}º andar.`);
-    });
-});
-
 // Adiciona um ouvinte de evento de clique para cada andar
 floors.forEach(floor => {
     floor.addEventListener('click', () => {
