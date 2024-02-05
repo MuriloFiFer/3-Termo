@@ -12,7 +12,7 @@ public class ConnectionFactory { // SERVE PARA GERENCIAR CONEXÕES SOMENTE //CON
     // Atributos
 
     // atributos
-    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String url = "jdbc:postgresql://localhost:5432/postgre";
     private static final String usuario = "postgres7210"; // Nome do ADM do banco
     private static final String senha = "postgres7210"; // Senha do ADM do banco
 
