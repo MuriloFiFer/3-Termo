@@ -1,0 +1,179 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import todolist.Model.Task;
+
+public class ListControl {
+
+    // AQUI É ONDE SE AFUNILA AS INFOMAÇÕES
+
+    // Atributos
+    private List<Task> tasks;
+    private DefaultTableModel tableModel;
+    private JTable table;
+
+    // Construtor
+    public ListControl(List<Task> tasks, DefaultTableModel tableModel, JTable table) {
+        this.tasks = tasks;
+        this.tableModel = tableModel;
+        this.table = table;
+
+    }
+
+    // Método para atualizar a tabela de exibição com dados do banco de dados
+    private void atualizarTabela() {
+        tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
+        tasks = new ListDAO().listarTodos();
+        // Obtém os carros atualizados do banco de dados
+        for (Task tarefa : tasks) {
+            // Adiciona os dados de cada carro como uma nova linha na tabela Swing
+            tableModel.addRow(new Object[] { tarefa.getDescription(), tarefa.isDone() });
+        }
+    }
+
+    // Método para cadastrar um novo carro no banco de dados
+    public void cadastrar(String tarefa, String concluida) {
+        new ListDAO().cadastrar(tarefa, concluida);
+        // Chama o método de cadastro no banco de dados
+        atualizarTabela(); // Atualiza a tabela de exibição após o cadastro
+
+    }
+
+    // Método para atualizar os dados de um carro no banco de dados
+    public void atualizar(String tarefa, String concluida, String id) {
+        new ListDAO().atualizar(tarefa, concluida, id);
+        // Chama o método de atualização no banco de dados
+        atualizarTabela(); // Atualiza a tabela de exibição após a atualização
+    }
+
+    // Método para apagar um carro do banco de dados
+    public void apagar(String id) { // Placa é a minha chave primária
+        new ListDAO().apagar(id);
+        // Chama o método de exclusão no banco de dados
+        atualizarTabela(); // Atualiza a tabela de exibição após a exclusão
+    }
+}
+
+
+
+package Controller;
+
+import java.util.List;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import Connection.CarrosDAO;
+import Model.Carros;
+
+public class CarrosControl {
+
+    // Atributos
+    private List<Carros> carros;
+    private DefaultTableModel tableModel;
+    private JTable table;
+
+    // Construtor
+    public CarrosControl(List<Carros> carros, DefaultTableModel tableModel, JTable table) {
+        this.carros = carros;
+        this.tableModel = tableModel;
+        this.table = table;
+    }
+
+    // Método para atualizar a tabela de exibição com dados do banco de dados
+    private void atualizarTabela() {
+        tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
+        carros = new CarrosDAO().listarTodos();
+        // Obtém os carros atualizados do banco de dados
+        for (Carros carro : carros) {
+
+            if (carro.getMarca().equals("") && carro.getModelo().equals("") && carro.getAno().equals("") && carro.getPlaca().equals("")
+                    && carro.getValor().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Preencha os Campos Corretamente", "Informação Inválida", 1);
+            } else {
+                // Adiciona os dados de cada carro como uma nova linha na tabela Swing
+            tableModel.addRow(new Object[] { carro.getMarca(), carro.getModelo(),
+
+                    carro.getAno(), carro.getPlaca(), carro.getValor() });
+            }
+
+        }
+    }
+
+    // Método para cadastrar um novo carro no banco de dados
+    public void cadastrar(String marca, String modelo, String ano, String placa, String valor) {
+        new CarrosDAO().cadastrar(marca, modelo, ano, placa, valor);
+        // Chama o método de cadastro no banco de dados
+        atualizarTabela(); // Atualiza a tabela de exibição após o cadastro
+    }
+
+    // Método para atualizar os dados de um carro no banco de dados
+    public void atualizar(String marca, String modelo, String ano, String placa, String valor) {
+        new CarrosDAO().atualizar(marca, modelo, ano, placa, valor);
+        // Chama o método de atualização no banco de dados
+        atualizarTabela(); // Atualiza a tabela de exibição após a atualização
+    }
+
+    // Método para apagar um carro do banco de dados
+    public void apagar(String placa) {
+        new CarrosDAO().apagar(placa);
+        // Chama o método de exclusão no banco de dados
+        atualizarTabela(); // Atualiza a tabela de exibição após a exclusão
+    }
+}
+
+
+
+Task
+
+package todolist.Model;
+
+public class Task { // Task significa Tarefa
+    // Atributos
+    String description;
+    boolean done; // done = Finalizado
+
+    // construtor
+    public Task(String description) {//Construtor é um metodo que contem o mesmo nome da minha classe, serve para a construção. //Para metro são aqueles que estão entre parenteses
+        
+        this.description = description;
+        this.done = false;
+    }
+
+    // Gerar os getters (Buscar a informação) e setters (Alterar a informação), são
+    // metodos/funções especiais
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isDone() { // isDone, pois a variavel esta em boolean ela so pode ser dois valores. Porem
+                              // se eu preferir mudar o nome para getDone, não há problma nenhum
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public Object gettarefas() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'gettarefas'");
+    }
+
+}
+
+
+TAREFA VARCHAR(255),CONCLUIDA ENUM(C,P), ID SERIAL PRIMARY KEY

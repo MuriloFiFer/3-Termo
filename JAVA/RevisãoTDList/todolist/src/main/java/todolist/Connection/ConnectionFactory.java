@@ -1,11 +1,11 @@
-package Connection;
+package todolist.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class ConnectionFactory {
-private static final String URL = "jdbc:postgresql://localhost:5432/postgre";
-private static final String USUARIO = "postgres";
+private static final String URL = "jdbc:postgresql://localhost:5432/postgresql";
+private static final String USUARIO = "localhost";
 private static final String SENHA = "postgres7210";
 public static Connection getConnection() {
 try {
