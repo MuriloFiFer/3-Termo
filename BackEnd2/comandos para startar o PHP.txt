@@ -1,0 +1,7 @@
+no terminal do VSCode
+
+cd .\"nome da pasta do projeto"    - para acessar a pasta.
+
+php -version  -para ver se esta configurado o php
+
+php -S localhost:8080     - para iniciar o servidor.
