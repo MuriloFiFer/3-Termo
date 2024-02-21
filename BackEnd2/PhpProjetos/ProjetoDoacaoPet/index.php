@@ -8,7 +8,8 @@
 +0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-color: Gainsboro;">
+<br> 
     <div class="container">
         <div class="container">
             <?php if (!empty($_GET['msgErro'])) { ?>

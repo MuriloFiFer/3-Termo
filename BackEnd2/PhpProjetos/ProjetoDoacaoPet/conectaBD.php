@@ -19,6 +19,7 @@ try {
     echo "Conectado no banco de dados!!!";
 
     $sql = "CREATE TABLE IF NOT EXISTS usuario (ID serial, NOME varchar(255), DATA_NASCIMENTO varchar(255), TELEFONE varchar(255), EMAIL varchar(255), SENHA varchar(255))";
+    
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
