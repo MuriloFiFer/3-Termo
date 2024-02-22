@@ -9,13 +9,13 @@ if (empty($_SESSION)) {
 ?>
 <html lang="pt-br”>
 <head>
-<meta charset=" utf-8">
+<meta charset="utf-8">
 <title>Cadastrar Novo Anúncio</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
 +0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-color: Gainsboro;">
     <!--
     Fase -> (F)ilhote / (A)dulto
 Tipo -> (G)ato / (C)achorro

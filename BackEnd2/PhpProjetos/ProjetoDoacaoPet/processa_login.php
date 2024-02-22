@@ -2,10 +2,12 @@
 require_once 'conectaBD.php';
 // Conectar ao BD (com o PHP)
 
+/*
 echo '<pre>';
 print_r($_POST);
 echo '</pre>';
 die();
+*/
 
 // Verificar se está chegando dados por POST
 if (!empty($_POST)) {
@@ -14,7 +16,7 @@ if (!empty($_POST)) {
     try {
         // Montar a SQL
         $sql = "SELECT nome, email, telefone, data_nascimento FROM usuario WHERE email =
-    :email AND senha = :senha";
+         :email AND senha = :senha";
         // Preparar a SQL (pdo)
         $stmt = $pdo->prepare($sql);
         // Definir/Organizar os dados p/ SQL
@@ -34,7 +36,7 @@ if (!empty($_POST)) {
             $_SESSION['data_nascimento'] = $result['data_nascimento'];
             $_SESSION['telefone'] = $result['telefone'];
             // Redirecionar p/ página inicial (ambiente logado)
-            header("Location: index_logado.php");
+            header("Location:index_logado.php");
         } else { // Signifca que o resultado da consulta SQL não trouxe nenhum registro
             // Falha na autenticaçao
             // Destruir a SESSAO
