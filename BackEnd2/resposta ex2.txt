@@ -1,0 +1,10 @@
+1- SQL
+2- noSQL
+3- SQL
+4- noSQL
+5- SQL
+6- noSQL
+7- SQL
+8- noSQL
+9- SQL
+10- noSQL
