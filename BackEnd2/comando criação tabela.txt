@@ -1,0 +1,36 @@
+para criar uma tabela direto pelo PGAdmin.
+
+CREATE TABLE clientes (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(50),
+	email VARCHAR(5)
+);
+
+
+
+para inserir dados na tabela.
+
+BEGIN;
+INSERT INTO clientes (nome, email)
+VALUES ('Maria', 'maria@gemail.com');
+UPDATE clientes SET nome = 'João' WHERE id = 1;
+COMMIT;
+
+BEGIN - inicia o comando..
+
+COMMIT - finaliza o comando.
+
+o codigo só finaliza com o commit, no caso podemos realizar um codigo de verificação de erro antes de inserir dados errados.
+
+
+SELECT * FROM clientes WHERE email = 'maria@email.com'); - seleciona a informação 'email' da tabela.
+
+SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'; -pesquisa todas as tabelas publica no banco.
+
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'clientes'; - recupera os nomes e tipos de dados das colunas da tabela 'clientes' em um banco de dados.
+
+
+
+
+
+
