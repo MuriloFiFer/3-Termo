@@ -8,24 +8,22 @@
 		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>webpack</groupId>
-	<artifactId>hello_world</artifactId>
+	<groupId>webapp</groupId>
+	<artifactId>hello_world2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hello_world</name>
+	<name>hello_world2</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -38,6 +36,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>42.7.2</version>
 		</dependency>
 	</dependencies>
 
