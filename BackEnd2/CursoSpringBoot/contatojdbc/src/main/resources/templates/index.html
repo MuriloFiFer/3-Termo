@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter</title>
+    <style>
+        /* Estilos CSS simples para a página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Assine nossa Newsletter</h2>
+        <form id="newsletterForm">
+            <label for="email">Seu E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <input type="submit" value="Inscrever">
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById("newsletterForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            validateForm();
+        });
+
+        //Função GET - pega dados inserido com o botão SUBMIT
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var messageElement = document.getElementById("message");
+
+            //verificação de erros - verifica dados inseridos
+            if (!emailRegex.test(email)) {
+                messageElement.style.color = "red";
+                messageElement.textContent = "Por favor, insira um endereço de e-mail válido.";
+                return false;
+            }
+
+            postData({ email: email })
+                .then(response => {
+                    if (response.ok) {
+                        messageElement.style.color = "green";
+                        messageElement.textContent = "Obrigado por se inscrever!";
+                    } else {
+                        messageElement.style.color = "red";
+                        messageElement.textContent = "Ocorreu um erro. Por favor, tente novamente mais tarde.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar dados:', error);
+                    messageElement.style.color = "red";
+                    messageElement.textContent = "Ocorreu um erro. Por favor, tente novamente mais tarde.";
+                });
+
+            // Atraso de 5 segundos antes de limpar a mensagem de sucesso
+            setTimeout(function() {
+                messageElement.textContent = "";
+            }, 2500);
+
+            return true;
+        }
+
+        // Função POST  
+        function postData(data) {
+            return fetch('URL_DO_SEU_BACKEND', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        }
+    </script>
+</body>
+</html>
