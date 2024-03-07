@@ -1,5 +1,4 @@
-package webapp.contatojdbc.connection;
-
+package webapp.newsletterjdbc.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -46,4 +45,3 @@ public class ConnectionFactory {
     }
 
 }
-

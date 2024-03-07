@@ -1,5 +1,4 @@
-package webapp.contatojdbc.connection;
-
+package webapp.newsletterjdbc.connection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,14 +7,12 @@ import java.sql.Statement;
 
 import org.springframework.cache.support.NoOpCacheManager;
 
-import webapp.contatojdbc.model.Email;
-
-public class EmailDAO {
+public class CadastroDAO {
      // atributo
     private Connection connection;
 
     // construtor
-    public EmailDAO() {
+    public CadastroDAO() {
         this.connection = ConnectionFactory.getConnection();
     }
 

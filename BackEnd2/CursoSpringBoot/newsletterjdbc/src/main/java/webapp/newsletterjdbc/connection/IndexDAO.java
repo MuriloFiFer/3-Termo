@@ -1,28 +1,23 @@
-package webapp.contatojdbc.connection;
-
+package webapp.newsletterjdbc.connection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.springframework.cache.support.NoOpCacheManager;
-
-import webapp.contatojdbc.model.Email;
-
-public class EmailDAO {
-     // atributo
+public class IndexDAO {
+    // atributo
     private Connection connection;
 
     // construtor
-    public EmailDAO() {
+    public IndexDAO() {
         this.connection = ConnectionFactory.getConnection();
     }
 
     // criar Tabela
     public void criarTabela() {
 
-        String sql = "CREATE TABLE IF NOT EXISTS Cadastro_spring (ID SERIAL PRIMARY KEY, NOME VARHCAR(255),EMAIL VARCHAR(255), TELEFONE VARCHAR(14), SENHA VARCHAR(30))";
+        String sql = "CREATE TABLE IF NOT EXISTS newsletter_spring (ID SERIAL PRIMARY KEY, NOME VARHCAR(255),EMAIL VARCHAR(255), TELEFONE VARCHAR(14))";
         try (Statement stmt = this.connection.createStatement()) {
             stmt.execute(sql);
             System.out.println("Tabela criada com sucesso.");
@@ -34,16 +29,13 @@ public class EmailDAO {
     }
 
     // Cadastrar Carro no banco
-    public void cadastrar(String nome,String email, String tel, String senha) {
+    public void cadastrar(String email) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para cadastrar na tabela
-        String sql = "INSERT INTO newsletter_spring (nome), (email), (tel), (senha) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO newsletter_spring (email) VALUES (?)";
         try {
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.setString(2, email);
-            stmt.setString(3, tel);
-            stmt.setString(4, senha);
+            stmt.setString(1, email);
             stmt.executeUpdate();
             System.out.println("Dados inseridos com sucesso");
 
@@ -71,4 +63,5 @@ public class EmailDAO {
             ConnectionFactory.closeConnection(connection, stmt);
         }
     }
+
 }
