@@ -1,28 +1,23 @@
-package webapp.connection;
+package webapp.contatojdbc.connection;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ConnectionFactory {
-    // Informações de conexão com o banco de dados
-    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String user = "postgres";
-    private static final String password = "postgres7210";
+    private static final String url = "jdbc:postgres://localhost:5432/postgres";
+    private static final String usuario = "postgres"; // Nome do ADM do banco
+    private static final String senha = "postgres7210"; // Senha do ADM do banco
 
-    // Método para obter uma conexão com o banco de dados
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection(url, user, password);
+            return DriverManager.getConnection(url, usuario, senha);
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao obter conexão com o banco de dados.", e); // e = erro
+            throw new RuntimeException("Erro ao obter conexão com o banco de dados.", e);
         }
     }
-
-    public static void closeConnection(Connection connection) {
+     public static void closeConnection(Connection connection) {
         try {
             if (connection != null) {
                 connection.close();
@@ -31,7 +26,6 @@ public class ConnectionFactory {
             ex.printStackTrace();
         }
     }
-
     // Método para fechar a conexão e o objeto PreparedStatement
     public static void closeConnection(Connection connection, PreparedStatement stmt) {
         closeConnection(connection);

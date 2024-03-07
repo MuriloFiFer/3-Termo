@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +45,7 @@
 
     <h2>Assine nossa Newsletter</h2>
     <p>Receba as últimas notícias e atualizações diretamente em sua caixa de entrada.</p>
-
+    <span th:text="${msg}"></span><br>
     <form method="post" id="newsletterForm">
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" required>
