@@ -1,0 +1,16 @@
+Montagem de Sistema de Escola
+- 2 acessos
+- Aluno
+        Curso
+        Disciplinas
+        Notaw
+        Pagamento
+
+- Professor
+        Cursos
+        Disciplinas
+        Notas
+
+- Secretaria
+        Matriculas 
+        Pagamentos
