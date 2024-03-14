@@ -8,7 +8,7 @@ import jakarta.persistence.Id; // Importa a anotação Id do pacote jakarta.pers
 
 @Entity // Indica que esta classe é uma entidade persistente
 public class Funcionario implements Serializable {
-    private static final long serialVersionUID =  1L; // Número de versão da classe serializada
+    private static final long serialVersionUID = 1L; // Número de versão da classe serializada
     @Id // Indica que este campo é a chave primária da entidade
     @GeneratedValue(strategy = GenerationType.AUTO) // Define a estratégia de geração de valor para a chave primária
     private long id; // Campo para armazenar o ID do funcionário
