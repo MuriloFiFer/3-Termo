@@ -18,7 +18,7 @@ public class AdministradorController {
         ar.save(adm);
     
     //TODO: process POST request
-
-    return "/login-adm";
+    System.out.println("Cadastro realizado com sucesso");
+    return "login/login-adm";
 }
 }
