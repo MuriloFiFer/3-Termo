@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://thymeleaf.org/">
+<html lang="en" xmlns:th="http://thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,17 +16,19 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="login-container">
+                    <!--criar uma menssagem-->
+                    <span th:class="${classe}" th:text="${msg}"></span>   <!-- chamado classe para deixar a menssagem com cor no logim , verificar style e AdmController-->
                     <div class="card">
                         <div class="card-header">
                             <h3>Login do Administrador</h3>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form action="acesso-adm" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nome de Usuário">
+                                    <input type="text" class="form-control" placeholder="CPF do Usuário" name="cpf">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Senha">
+                                    <input type="password" class="form-control" placeholder="Senha" name="senha">
                                 </div>
                                 <button type="submit" class="btn btn-block btn-login"><i class="fas fa-sign-in-alt"></i> Entrar</button>
                                 <a href="/cadastro-adm"><button type="button" class="btn btn-block btn-login"><i class="fas fa-sign-in-alt"></i> Cadastrar</button></a>

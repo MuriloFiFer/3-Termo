@@ -42,3 +42,12 @@ form a {
     text-decoration: none;
     color: #333;
 }
+
+/* colocando cor na menssagem de login */
+.verde{
+    color: green;
+}
+
+.vermelho{
+    color: red;
+}

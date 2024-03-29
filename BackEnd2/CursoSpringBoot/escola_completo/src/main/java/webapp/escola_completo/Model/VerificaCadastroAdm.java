@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class VerificaCadastroAdm implements Serializable {
-    //Atributos
+    //atributos
     @Id
     private String cpf;
     private String nome;
@@ -24,6 +24,5 @@ public class VerificaCadastroAdm implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
     
 }
