@@ -96,7 +96,7 @@ FROM Pedidos AS P
 -- Realiza uma junção entre as tabelas Pedidos e Clientes, relacionando os IDs dos clientes
 JOIN Clientes AS C ON P.ID_Cliente = C.ID
 -- Filtra apenas os pedidos feitos nos últimos 30 dias
-WHERE P.Data_Pedido >= CURRENT_DATE - INTERVAL '30 days';
+WHERE P.Data_Pedido >= CURRENT_DATE - INTERVAL '30 days';  --pode ser  "CURRENT_DATE - 30;"
 
 
 
