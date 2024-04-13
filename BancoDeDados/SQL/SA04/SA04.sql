@@ -1,6 +1,7 @@
 -- Exercicio 1
 --DDL
 
+
 CREATE DATABASE SA04;
 
 CREATE TABLE IF NOT EXISTS Clientes(   
@@ -105,9 +106,6 @@ WHERE P.Data_Pedido >= CURRENT_DATE - INTERVAL '30 days';  --pode ser  "CURRENT_
 
 CREATE DATABASE SA04_Ex2;
 
-
-
-
 --Criação da tabela
 CREATE TABLE IF NOT EXISTS Produtos(   
     ID INT PRIMARY KEY,
@@ -194,7 +192,7 @@ CHECK (Cargo IN ('Gerente', 'Vendedor', 'Atendente'));
 --Inserção de dados
 
 ALTER TABLE Produtos
-RENAME COLUMN Descição TO Descrição;
+RENAME COLUMN Descrição TO Descrição;
 
 
 INSERT INTO Produtos (ID, Nome, Descrição, Preço)
@@ -276,3 +274,62 @@ JOIN Produtos_Categorias PC ON P.ID = PC.ID_Produto
 WHERE PC.ID_Categoria = 1;
 
 --atividade realizada até Exercicio 2, DML Ex 5.
+--Continuação com correção do professor
+
+SELECT * FROM Funcionarios;
+
+-- Atualizar o cargo de um funcionário na tabela "Funcionários"
+UPDATE Funcionarios SET Cargo = 'Supervisor' WHERE ID = 1;
+
+-- Excluir um funcionário da tabela "Funcionários"
+DELETE FROM Funcionarios WHERE ID = 3;
+
+-- Selecionar todos os pedidos
+SELECT * FROM Pedidos;
+
+-- Listar os cinco produtos mais caros da tabela "Produtos"
+SELECT * FROM Produtos ORDER BY Preco DESC LIMIT 5;
+
+-- Calcular o valor total de todos os pedidos na tabela "Pedidos"
+SELECT SUM(Valor) AS Valor_Total FROM Pedidos;
+
+-- Listar todos os clientes que fizeram pelo menos um pedido cancelado
+-- Supondo que os pedidos com status 'Cancelado' estejam marcados como tal na tabela "Pedidos"
+SELECT c.*
+FROM Clientes c
+JOIN Pedidos p ON c.ID = p.ID_Cliente
+WHERE p.Status = 'Cancelado';
+
+-- Atualizar o status de todos os pedidos para "Finalizado" onde a data do pedido for anterior a uma determinada data
+UPDATE Pedidos SET Status = 'Finalizado' WHERE Data < '2024-01-01';
+
+-- Excluir todos os pedidos finalizados há mais de um ano
+DELETE FROM Pedidos WHERE Status = 'Finalizado' AND Data < DATE_SUB(CURDATE(), INTERVAL 1 YEAR);
+
+-- Selecionar os clientes que fizeram mais de dois pedidos nos últimos três meses
+-- Supondo que os pedidos sejam marcados com a data atual na coluna "Data" da tabela "Pedidos"
+SELECT c.*
+FROM Clientes c
+JOIN Pedidos p ON c.ID = p.ID_Cliente
+WHERE p.Data >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+GROUP BY c.ID
+HAVING COUNT(p.ID) > 2;
+
+-- Listar os pedidos agrupados por status e ordená-los pela data do pedido
+SELECT * FROM Pedidos ORDER BY Status, Data;
+
+-- Atualizar o status de todos os pedidos com mais de 30 dias para "Atrasado"
+UPDATE Pedidos SET Status = 'Atrasado' WHERE Data < CURRENT_DATE - 30;
+
+-- Calcular o total de vendas por categoria de produto
+SELECT c.Nome AS Categoria, SUM(p.Preco) AS Total_Vendas
+FROM Produtos_Categorias pc
+JOIN Produtos p ON pc.ID_Produto = p.ID
+JOIN Categorias c ON pc.ID_Categoria = c.ID
+GROUP BY c.Nome;
+
+-- Listar os produtos que nunca foram associados a nenhum pedido na tabela "Pedidos_Produtos"
+SELECT p.*
+FROM Produtos p
+LEFT JOIN Pedidos_Produtos pp ON p.ID = pp.ID_Produto
+WHERE pp.ID_Produto IS NULL;
