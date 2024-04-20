@@ -254,9 +254,29 @@ INSERT INTO Pedidos_Produtos (id_pedido, id_produto) VALUES (3, 8);
 
 INSERT INTO Pedidos_Produtos (id_pedido, id_produto) VALUES (3, 9);
 
---SELECT * FROM Pedidos_Produtos;
+SELECT * FROM Pedidos_Produtos;
 
+-- Camiseta Azul, Calça Jeans e Jaqueta de Couro à categoria "Vestuário"
+INSERT INTO Produtos_Categorias (ID_Produto, ID_Categoria)
+VALUES (1, 1), (2, 1), (7, 1);
 
+-- Tênis Esportivo, Óculos de Sol e Chapéu de Palha à categoria "Acessórios"
+INSERT INTO Produtos_Categorias (ID_Produto, ID_Categoria)
+VALUES (3, 2), (6, 2), (10, 2);
+
+-- Bolsa de Couro, Mochila Escolar e Bolsa Térmica à categoria "Bolsas e Malas"
+INSERT INTO Produtos_Categorias (ID_Produto, ID_Categoria)
+VALUES (4, 3), (8, 3), (13, 3);
+
+-- Relógio Analógico, Perfume Floral e Brinco de Prata à categoria "Acessórios Pessoais"
+INSERT INTO Produtos_Categorias (ID_Produto, ID_Categoria)
+VALUES (5, 4), (14, 4), (15, 4);
+
+-- Cinto de Couro, Moletom Cinza e Sapatênis Casual à categoria "Roupas Casuais"
+INSERT INTO Produtos_Categorias (ID_Produto, ID_Categoria)
+VALUES (9, 5), (11, 5), (12, 5);
+
+SELECT * FROM Produtos_Categorias;
 
 
 
