@@ -1,0 +1,8 @@
+Axesso ADM -
+
+Fazer Matricula do Aluno - (pagina interna do ADM)
+ - cadastrar o Aluno
+ - disciplinas (model)
+ 
+Cadastrar o Professor
+ -disciplina(1)
