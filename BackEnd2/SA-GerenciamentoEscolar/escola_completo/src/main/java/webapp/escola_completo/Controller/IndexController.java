@@ -1,4 +1,4 @@
-package webapp.escola_completo.Controller;
+package webapp.escola_completo.Controller.IndexController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
