@@ -1,40 +1,46 @@
 package br.com.muriloff.lojaLivro.Model;
 
-
-
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
+@Entity
 public class Livro {
 
-
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
-    private String author;
+    private String titulo;
+    private String autor;
 
-	
-    // getters e setters
+    //construtor
+    public Livro() {
+    }
+    public Livro(int id, String titulo, String autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+    
+    //set get
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public String getTitle() {
-        return title;
+    public String getTitulo() {
+        return titulo;
     }
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
-    public String getAuthor() {
-        return author;
+    public String getAutor() {
+        return autor;
     }
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
-   
 }
