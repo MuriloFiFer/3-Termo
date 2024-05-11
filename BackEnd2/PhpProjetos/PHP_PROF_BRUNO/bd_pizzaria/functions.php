@@ -26,7 +26,7 @@ echo <<<EOT
 		<meta charset="utf-8">
 		<title>$title</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
 	</head>
 	<body>
     <nav class="navtop">
@@ -34,6 +34,7 @@ echo <<<EOT
     		<h1> Pizzaria Don Fernandez </h1>
             <a href="index.php"><i class="fas fa-home"></i>Inicio</a>
     		<a href="read.php"><i class="fas fa-shopping-basket"></i>Pedidos</a>
+            <a href="entregas.php"><i class="fa-solid fa-motorcycle"></i></i>Entregas</a>
     	</div>
     </nav>
 EOT;
