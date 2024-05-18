@@ -695,3 +695,70 @@ INSERT INTO venda VALUES (
   '2006-10-05',
   '550'
 );
+
+
+--Ex1
+SELECT * FROM VENDA;
+SELECT * FROM CLIENTE;
+
+SELECT venda.DUPLIC, cliente.NOME, venda.VALOR
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+WHERE cliente.NOME LIKE 'PCTEC%';  
+--WHERE cliente.NOME = 'PCTEC - MICROCOMPUTADORES S/A.';  
+
+--OBS:
+--Utilizando LIKE busca tudo oque tem 'PCTEC' independente do restante
+--Utilizando ' ='PCTEC' ' traz exatamente oque esta entre  ' '  se tiver algo errado não encontra;
+
+--Ex2 MYSQL
+SELECT cliente.NOME, venda.VENCTO
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+WHERE YEAR(venda.VENCTO) = 2004 AND MONTH(venda.VENCTO) = 11
+ORDER BY venda.VENCTO;
+
+--Ex2 POSTGRES
+SELECT cliente.NOME, venda.VENCTO
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+WHERE EXTRACT (YEAR FROM venda.VENCTO) = 2004 AND EXTRACT(MONTH FROM venda.VENCTO) = 11
+ORDER BY venda.VENCTO;
+
+
+--Ex3
+SELECT cliente.NOME, venda.VENCTO
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+WHERE EXTRACT (MONTH FROM venda.VENCTO) = 10
+ORDER BY venda.VENCTO;
+
+
+--Ex4
+SELECT cliente.NOME, COUNT(*) AS QTDE, SUM(venda.VALOR) AS TOTAL
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+GROUP BY cliente.NOME
+ORDER BY TOTAL;
+
+--Ex5
+SELECT cliente.NOME, COUNT(*) AS TITULOS, SUM(venda.VALOR) AS TOTAL
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+GROUP BY cliente.NOME
+ORDER BY TOTAL;
+
+
+SELECT cliente.NOME, COUNT(*), SUM(venda.VALOR) 
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+GROUP BY cliente.NOME;
+
+SELECT cliente.NOME AS CLIENTE, COUNT(*) AS VENCIDOS
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+WHERE venda.VENCTO <= '2003-12-31'
+GROUP BY cliente.NOME
+ORDER BY CLIENTE;
+
+
+--Ex7
+SELECT cliente.NOME AS CLIENTE,  venda.VALOR, ROUND(venda.VALOR * 0.10) AS JUROS,
+  ROUND(venda.VALOR * 1.10, 2) AS TOTAL
+FROM cliente INNER JOIN venda ON cliente.CODCLI = venda.CODCLI
+WHERE venda.VENCTO <= '1999-12-31'
+ORDER BY CLIENTE;
+
+
