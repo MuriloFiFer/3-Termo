@@ -264,13 +264,3 @@ button[type="button"] {
 button[type="button"]:hover {
     background-color: #3f69a8;
 }
-
-
-.imgLogo{
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-}
-#img1{
-    height: 200px;
-}

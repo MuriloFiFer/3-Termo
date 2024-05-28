@@ -304,6 +304,13 @@ FROM
     funcionarios;
 
 --EX8
+CREATE TABLE IF NOT EXISTS horario_funcionamento (
+    id SERIAL PRIMARY KEY,
+    dia_semana VARCHAR(20) NOT NULL,
+    horario_abertura TIME NOT NULL,
+    horario_fechamento TIME NOT NULL
+);
+
 SELECT 
     horario_abertura,
     horario_fechamento

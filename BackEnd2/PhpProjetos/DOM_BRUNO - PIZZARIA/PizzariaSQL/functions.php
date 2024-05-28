@@ -4,7 +4,7 @@ function pdo_connect_pgsql() {
     $DATABASE_PORT = '5432';
     $DATABASE_USER = 'postgres';
     $DATABASE_PASS = 'postgres';
-    $DATABASE_NAME = 'pizzaria_don_fernandes';
+    $DATABASE_NAME = 'pizzaria';
     try {
         $pdo = new PDO('pgsql:host=' . $DATABASE_HOST . ';port=' . $DATABASE_PORT . ';dbname=' . $DATABASE_NAME . ';user=' . $DATABASE_USER . ';password=' . $DATABASE_PASS);
         // Define o modo de erro para Exception para que os erros sejam lançados e possam ser capturados.
@@ -61,7 +61,7 @@ echo <<<EOT
 	<body>
     <nav class="navtop">
     	<div>
-    		<h1> Pizzaria Dom Fernandes </h1>
+    		<h1> Pizzaria Dom Bruno </h1>
             <a href="index.php"><i class="fas fa-home"></i>Inicio</a>
     		<a href="read.php"><i class="fas fa-shopping-basket"></i>Pedidos</a>
             <a href="ler_entregas.php"><i class="fa-solid fa-motorcycle"></i>Entregas</a>

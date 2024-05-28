@@ -5,22 +5,22 @@ $msg = '';
 // Verifica se o ID do contato existe
 if (isset($_GET['id'])) {
     // Seleciona o registro que será deletado
-    $stmt = $pdo->prepare('SELECT * FROM contatos WHERE id_contato = ?');
+    $stmt = $pdo->prepare('SELECT * FROM entregas WHERE id_entregas = ?');
     $stmt->execute([$_GET['id']]);
     $contact = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$contact) {
-        exit('Contato Não Localizado!');
+        exit('Entrega Não Localizada!');
     }
     // Certifique-se de que o usuário confirma antes da exclusão
     if (isset($_GET['confirm'])) {
         if ($_GET['confirm'] == 'yes') {
             // O usuário clicou no botão "Sim", deleta o registro
-            $stmt = $pdo->prepare('DELETE FROM contatos WHERE id_contato = ?');
+            $stmt = $pdo->prepare('DELETE FROM entregas WHERE id_entregas = ?');
             $stmt->execute([$_GET['id']]);
-            $msg = 'Pedido Apagado com Sucesso!';
+            $msg = 'Entrega Cancelada com Sucesso!';
         } else {
             // O usuário clicou no botão "Não", redireciona de volta para a página de leitura
-            header('Location: read.php');
+            header('Location: ler_entregas.php');
             exit;
         }
     }
@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
 ?>
 
 
-<?=template_header('Apagar Usuários')?>
+<?=template_header('Apagar Entrega')?>
 
 <div class="content delete">
 	<h2>Apagar Pedido ----  <?=$contact['nome']?></h2>
@@ -39,8 +39,8 @@ if (isset($_GET['id'])) {
     <?php else: ?>
 	<p>Você tem certeza que deseja apagar o contato ----<?=$contact['nome']?>?</p>
     <div class="yesno">
-        <a href="delete.php?id=<?=$contact['id_contato']?>&confirm=yes">Sim</a>
-        <a href="delete.php?id=<?=$contact['id_contato']?>&confirm=no">Não</a>
+        <a href="apagar_entrega.php?id=<?=$contact['id_entregas']?>&confirm=yes">Sim</a>
+        <a href="apagar_entrega.php?id=<?=$contact['id_entregas']?>&confirm=no">Não</a>
     </div>
     <?php endif; ?>
 </div>
