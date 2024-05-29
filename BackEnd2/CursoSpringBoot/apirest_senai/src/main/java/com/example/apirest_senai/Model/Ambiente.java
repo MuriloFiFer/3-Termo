@@ -9,10 +9,14 @@ import lombok.*;
 @Entity
 @Setter
 @Getter
-public class Responsavel implements Serializable {
+public class Ambiente implements Serializable {
     //atributos
     @Id
     private Long id;
     private String nome;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_responsavel")
+    private Responsavel responsavel;
 
 }
