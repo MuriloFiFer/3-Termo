@@ -7,13 +7,15 @@ import com.example.apirest_senai.Model.Responsavel;
 import com.example.apirest_senai.Repository.ReponsavelRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 
 @RestController
@@ -23,7 +25,6 @@ public class ResponsavelController {
     @Autowired
     ReponsavelRepository repository;
 
-    //jpa busca no banco, todos elementos de "Responsavel"
     @GetMapping()
     public List<Responsavel> getResponsavel () {
         return (List<Responsavel>) repository.findAll();
@@ -34,5 +35,29 @@ public class ResponsavelController {
         return repository.save(responsavel);
     }
     
+    @GetMapping("/{id}")
+    public Optional<Responsavel> getResponsavelById(@PathVariable Long id) {
+        return repository.findById(id);
+    }
+    @PutMapping("/{id}")
+    public Responsavel putResponsavel(  @PathVariable Long id, 
+                                        @RequestBody Responsavel responsavel) {
+        Optional<Responsavel> busca = repository.findById(id);
+        if(!busca.isEmpty()){
+            responsavel.setId(id);
+            return repository.save(responsavel);
+        }else{
+            return null;
+        }        
+    }
+    @DeleteMapping("/{id}")
+    public void deleteResponsavel(@PathVariable Long id){       
+            repository.deleteById(id);       
+    }
     
-}
+
+    }
+    
+    
+    
+    
