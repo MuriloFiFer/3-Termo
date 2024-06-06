@@ -14,5 +14,4 @@ public class Responsavel implements Serializable {
     @Id
     private Long id;
     private String nome;
-
 }

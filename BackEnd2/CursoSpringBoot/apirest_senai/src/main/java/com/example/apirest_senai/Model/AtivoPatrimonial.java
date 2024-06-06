@@ -1,5 +1,6 @@
 package com.example.apirest_senai.Model;
 
+
 import java.io.Serializable;
 
 import jakarta.persistence.*;
@@ -9,11 +10,11 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class AtivoPatrimonial implements Serializable{
+public class AtivoPatrimonial implements Serializable {
     //atributos
     @Id
     private Long id;
-
+    
     private String nome;
 
     @ManyToOne

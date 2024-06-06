@@ -1,5 +1,4 @@
 package com.example.apirest_senai.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/ativopatrimonial")
+@RequestMapping("/ativo")
 public class AtivoPatrimonialController {
     
     @Autowired
@@ -31,8 +30,8 @@ public class AtivoPatrimonialController {
     }
     
     @PostMapping()
-    public AtivoPatrimonial postAmbiente(@RequestBody AtivoPatrimonial ativopatrimonial) {
-        return repository.save(ativopatrimonial);
+    public AtivoPatrimonial postAtivoPatrimonial(@RequestBody AtivoPatrimonial ativoPatrimonial) {
+        return repository.save(ativoPatrimonial);
     }
 
     @GetMapping("/{id}")
@@ -41,17 +40,17 @@ public class AtivoPatrimonialController {
     }
     @PutMapping("/{id}")
     public AtivoPatrimonial putAtivoPatrimonial(  @PathVariable Long id, 
-                                        @RequestBody AtivoPatrimonial ativopatrimonial) {
+                                        @RequestBody AtivoPatrimonial ativoPatrimonial) {
         Optional<AtivoPatrimonial> busca = repository.findById(id);
         if(!busca.isEmpty()){
-            ativopatrimonial.setId(id);
-            return repository.save(ativopatrimonial);
+            ativoPatrimonial.setId(id);
+            return repository.save(ativoPatrimonial);
         }else{
             return null;
         }
     }
     @DeleteMapping("/{id}")
-    public void deleteAmbiente(@PathVariable Long id){
+    public void deleteAtivoPatrimonial(@PathVariable Long id){
         repository.deleteById(id);      
     }
     
