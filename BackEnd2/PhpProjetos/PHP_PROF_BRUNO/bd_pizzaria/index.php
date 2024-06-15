@@ -11,8 +11,10 @@ include 'functions.php';
 	<?=template_header('Pizzaria Dom Fernandes')?>
 
 <div class="content">
+	
 	<h2>Inicio</h2>
-	<p>Seja Bem-Vindo!</p>
+	<p>Seja Bem-Vindo e Bon Appetit!</p>
+	<p></p>
 </div>
 <div class="imgLogo">
 <img src="img/img1.jfif" alt="" id="img1">

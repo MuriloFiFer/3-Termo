@@ -6,15 +6,19 @@
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    background-color: #FFFFFF;
+    background-color: whitesmoke;
     margin: 0;
 }
 .navtop {
-    background-color: #3f69a8;
+    background-color: #3f7ea8;
     height: 60px;
     width: 100%;
-    border: 0;
+    border: 0;   
 }
+.navtop #imgLogo1{    
+    width: 110px;
+}
+
 .navtop div {
     display: flex;
     margin: 0 auto;

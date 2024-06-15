@@ -7,7 +7,7 @@
     if (!empty($_POST)) {
         // Se os dados POST não estiverem vazios, insere um novo registro
         // Configura as variáveis que serão inseridas. Devemos verificar se as variáveis POST existem e, se não existirem, podemos atribuir um valor padrão a elas.
-        $id_contato = isset($_POST['id_contato']) && !empty($_POST['id_contato']) && $_POST['id_contato'] != 'auto' ? $_POST['id_contato'] : NULL;
+      //  $id_contato = isset($_POST['id_contato']) && !empty($_POST['id_contato']) && $_POST['id_contato'] != 'auto' ? $_POST['id_contato'] : NULL;
         // Verifica se a variável POST "nome" existe, se não existir, atribui o valor padrão para vazio, basicamente o mesmo para todas as variáveis
         $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
         $email = isset($_POST['email']) ? $_POST['email'] : '';
