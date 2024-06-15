@@ -211,7 +211,7 @@
         });
 
         
-        document.getElementById('clearsituationButton').addEventListener('click', function() {
+        document.getElementById('clearSituationButton').addEventListener('click', function() {
             document.getElementById('search_situacao').selectedIndex = 0;
         });
     </script>
